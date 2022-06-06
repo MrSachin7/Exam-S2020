@@ -1,0 +1,68 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = AuthorBlazor
+build_property.RootNamespace = AuthorBlazor
+build_property.ProjectDir = D:\SEM 3\DNP1\Exam-S2020\AuthorBlazor\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\SEM 3\DNP1\Exam-S2020\AuthorBlazor
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/SEM 3/DNP1/Exam-S2020/AuthorBlazor/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SEM 3/DNP1/Exam-S2020/AuthorBlazor/Pages/BooksAndAuthors.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQm9va3NBbmRBdXRob3JzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SEM 3/DNP1/Exam-S2020/AuthorBlazor/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SEM 3/DNP1/Exam-S2020/AuthorBlazor/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SEM 3/DNP1/Exam-S2020/AuthorBlazor/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SEM 3/DNP1/Exam-S2020/AuthorBlazor/Pages/CreateAuthor.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlQXV0aG9yLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-2jx8wr53au
+
+[D:/SEM 3/DNP1/Exam-S2020/AuthorBlazor/Pages/CreateBooks.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlQm9va3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-wu4l1gpam8
+
+[D:/SEM 3/DNP1/Exam-S2020/AuthorBlazor/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-8pk7vxouq8
+
+[D:/SEM 3/DNP1/Exam-S2020/AuthorBlazor/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-x8zw77p40c
+
+[D:/SEM 3/DNP1/Exam-S2020/AuthorBlazor/UIElements/Modal.razor]
+build_metadata.AdditionalFiles.TargetPath = VUlFbGVtZW50c1xNb2RhbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-1fy3rh86kl
+
+[D:/SEM 3/DNP1/Exam-S2020/AuthorBlazor/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SEM 3/DNP1/Exam-S2020/AuthorBlazor/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/SEM 3/DNP1/Exam-S2020/AuthorBlazor/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

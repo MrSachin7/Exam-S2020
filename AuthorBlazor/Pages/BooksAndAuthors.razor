@@ -1,0 +1,170 @@
+﻿@page "/BooksAndAuthors"
+@using AuthorAPI.Models
+@using AuthorBlazor.Services
+@using Microsoft.AspNetCore.Components
+@using Microsoft.Extensions.Primitives
+@using System.Net.Http.Headers
+@inject IBookService BookService
+@inject IAuthorService AuthorService
+
+
+<div class="filterbar">
+    <div class="filterscontainer">
+        <label class="funnel" @onclick="OpenCloseFilters"> Filter :</label>
+        @if (doShowFilters) {
+            <div class="filter">
+                <div>
+                    <label>Author's first name:</label>
+                </div>
+                <div>
+                    <input type="text" class="owneridfield" @bind="authorName" min="0"/>
+                </div>
+            </div>
+            <div class="filter">
+                <div>
+                    <label style="text-align: center">Book Title</label>
+                </div>
+                <div>
+                    <input type="text" @bind="bookTitle" placeholder="team name"/>
+                    <button onclick="@Filter"> Search</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@if (_authorsToShow == null) {
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else if (!_authorsToShow!.Any()) {
+    <p>
+        <em>No todos matching your search criteria</em>
+    </p>
+}
+else {
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Publication year</th>
+            <th>Num of Pages</th>
+            <th>Genre</th>
+            <th>Authors FirstName</th>
+            <th>Authors LastName</th>
+            <th> Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var author in _authorsToShow!) {
+            @foreach (Book book in author.Books) {
+                <tr>
+                    <td> @book.Title</td>
+                    <td> @book.PublicationYear</td>
+                    <td> @book.NumOfPages</td>
+                    <td> @book.Genre</td>
+                    <td> @author.FirstName</td>
+                    <td> @author.LastName</td>
+
+                    <td>
+                        <label @onclick="@(() => RemoveBook(book.ISBN))" style="cursor:pointer; color: red; font-weight: bold">
+                            &#x2717;
+                        </label>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+    <br/>
+    <br/>
+}
+@if (!string.IsNullOrEmpty(errorLabel)) {
+    <label style="color: red">@errorLabel</label>
+}
+
+
+@code {
+
+    private List<Author>? _authorsToShow, _allAuthors;
+    private string errorLabel;
+
+    // Filters 
+    private bool? authorNameFilter, bookTitleFilter;
+    private bool doShowFilters;
+    private string? authorName, bookTitle;
+
+
+    protected override async Task OnInitializedAsync() {
+        try {
+            _allAuthors =await AuthorService.GetAllAuthors();
+            _authorsToShow = _allAuthors;
+        }
+        catch (Exception e) {
+            errorLabel = e.Message;
+            throw;
+        }
+    }
+
+
+    private async Task RemoveBook(int bookISBN) {
+        errorLabel = string.Empty;
+        Book bookFromDb = await BookService.RemoveBook(bookISBN);
+
+        foreach (Author author in _allAuthors!) {
+            Book? book = author.Books.FirstOrDefault(book1 => book1.ISBN == bookFromDb.ISBN);
+
+            if (book != null) {
+                author.Books.Remove(book);
+                break;
+            }
+        }
+    }
+
+    private void OpenCloseFilters() {
+        doShowFilters = !doShowFilters;
+        if (!doShowFilters) {
+            authorNameFilter = null;
+            bookTitleFilter = null;
+            _authorsToShow = _allAuthors;
+        }
+    }
+
+    private async Task Filter() {
+        if (bookTitle == null && authorName == null) {
+            return;
+        }
+        if (bookTitle == null) {
+            filterByAuthors();
+            return;
+        }
+        if (authorName == null) {
+            filterByBookTitle();
+            return;
+        }
+        filterByBookTitle();
+        filterByAuthors();
+    }
+
+    private void filterByBookTitle() {
+        List<Book> booksUnMatched = new List<Book>();
+        foreach (Author author in _authorsToShow!) {
+            foreach (var book in author.Books) {
+                if (!book.Title.Contains(bookTitle)) {
+                    booksUnMatched.Add(book);
+                }
+            }
+        }
+        foreach (Author author in _authorsToShow!) {
+            foreach (Book book in booksUnMatched) {
+                author.Books.Remove(book);
+            }
+        }
+    }
+
+    private void filterByAuthors() {
+        _authorsToShow = _authorsToShow!.Where(author => author.FirstName.Contains(authorName!)).ToList();
+    }
+
+}
